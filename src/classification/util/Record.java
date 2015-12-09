@@ -11,16 +11,19 @@ public class Record {
 		this.setColumnNames(columnNames);
 		String[] cellValues = tupleLine.split(";");
 		for(int i = 0 ; i < cellValues.length ; i++){
+			cellValues[i]=cellValues[i].replaceAll("\"","");
 			cells.put(columnNames.get(i), cellValues[i]);
 		}
 	}
-	
 	public String toString(){
 		return cells.toString();
 	}
 	
 	public String getValue(String columnName){
 		return cells.get(columnName);
+	}
+	public void setValue(String columnName,String value){
+		 this.cells.put(columnName,value);
 	}
 	
 	public String getValue(int columnIndex){
